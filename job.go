@@ -463,7 +463,7 @@ func OneTimeJobStartImmediately() OneTimeJobStartAtOption {
 // This datetime must be in the future.
 func OneTimeJobStartDateTime(start time.Time) OneTimeJobStartAtOption {
 	return func(j *internalJob) error {
-		if start.IsZero() || start.Before(time.Now()) {
+		if start.IsZero() {
 			return ErrOneTimeJobStartDateTimePast
 		}
 		j.startTime = start
